@@ -4,6 +4,7 @@
 	<meta charset="utf-8"/>
 	<title></title>
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://download-data-uri.appspot.com/js/download-data-uri.js"></script>
 	<script>
 	var file;
 	$.ajax({
@@ -14,8 +15,13 @@
 	 		file = xml;
 		}
 	});
-	// var binaryPPFile = createPowerpointFromJSON(sourceJSON);
-	window.location = "data:ms-powerpoint;base64," + btoa(file);
+	</script>
+	
+	<script type="text/javascript">
+	downloadDataURI({
+	        filename: "fileName.ppt", 
+	        data: "data:ms-powerpoint;base64," + btoa(file)
+	});
 	</script>
 </head>
 <body>
