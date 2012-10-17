@@ -13,16 +13,21 @@
 		dataType: "xml",
 		success: function(xml) {
 	 		file = xml;
+
 		}
 	});
+
+	 // window.location = "data:ms-powerpoint;base64," + btoa(file);
+	
 	</script>
 	
 	<script type="text/javascript">
 	downloadDataURI({
 	        filename: "fileName.ppt", 
-	        data: "data:ms-powerpoint;base64," + btoa(file)
+	        data: "data:application/vnd.ms-powerpoint;base64," + btoa(file)
 	});
 	</script>
+
 </head>
 <body>
 </body>
