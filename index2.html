@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>Example</title>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="jquery.base64.js"></script>
+</head>
+<body>
+    <script>
+    	var file;
+			$.ajax({
+				type: "GET",
+				url: "file2.xml",
+				dataType: "xml",
+				success: function(xml) {
+			 		document.write('<a href="data:application/vnd.ms-powerpoint;base64,' + $.base64.encode(xml) + '">click to make save dialog</a>');
+				}
+			});
+        
+        
+    </script>
+</body>
+</html>

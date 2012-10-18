@@ -4,31 +4,44 @@
 	<meta charset="utf-8"/>
 	<title></title>
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="http://download-data-uri.appspot.com/js/download-data-uri.js"></script>
+	
+	
+
+</head>
+<body>
 	<script>
+
 	var file;
 	$.ajax({
 		type: "GET",
 		url: "file2.xml",
 		dataType: "xml",
 		success: function(xml) {
+			console.log("success")
 	 		file = xml;
-
+	 		console.log(btoa(file));
+	 		window.location = "data:application/vnd.ms-powerpoint;base64," + btoa(file);
 		}
 	});
 
-	 // window.location = "data:ms-powerpoint;base64," + btoa(file);
-	
-	</script>
-	
-	<script type="text/javascript">
-	downloadDataURI({
-	        filename: "fileName.ppt", 
-	        data: "data:application/vnd.ms-powerpoint;base64," + btoa(file)
-	});
-	</script>
+	var downloadURL = function downloadURL(url)
+	{
+	    var iframe;
+	    iframe = document.getElementById("hiddenDownloader");
+	    if (iframe === null)
+	    {
+	        iframe = document.createElement('iframe');  
+	        iframe.id = "hiddenDownloader";
+	        iframe.style.visibility = 'hidden';
+	        document.body.appendChild(iframe);
+	    }
+	    iframe.src = url;   
+	}
 
-</head>
-<body>
+	downloadURL("file.xml");
+
+	
+	
+	</script>
 </body>
 </html>
